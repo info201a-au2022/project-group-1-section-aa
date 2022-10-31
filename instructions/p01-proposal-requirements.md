@@ -11,16 +11,9 @@
 |---------------| --------------
 |Code name | M-you-sic | 
 |Project title| Spotify Top Tracks |
-|---------------| --------------
-|Authors | Harry Hall - hhall5@uw.edu
-Olivia Sapp - osapp2@uw.edu
-Jiajie(Jeremy) He - jiajih@uw.edu
-Terra Shrestha - Tshres@uw.edu |
-|---------------| --------------
+|Authors | Harry Hall - hhall5@uw.edu, Olivia Sapp - osapp2@uw.edu, Jiajie(Jeremy) He - jiajih@uw.edu, Terra Shrestha - Tshres@uw.edu |
 |Affiliation |  INFO-201: Technical Foundations of Informatics - The Information School - University of Washington |
-|---------------| --------------
 |Date | Autumn 2022|
-|---------------| --------------
 |Abstract | Our main question is  how do we take data from active listeners to give them a recommended playlist; For example, what BPM do they listen to, what is their favorite artist, do they like similar songs? To address this question we will research and look into how data sets are combined and suggested through the users choice of music. We plan to read about streaming services and learn how the spotify data sets work to organize the selection of suggested music.  |
 |---------------| --------------
 |Keywords | Music, Spotify Streaming, Global |
