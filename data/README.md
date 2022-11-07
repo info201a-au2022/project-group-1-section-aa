@@ -5,7 +5,7 @@ In our project, we use the following data files and Application Programming Inte
 ## Data files (TODO: Update/delete for your PROJECT)
 |Data File Name | Brief Description|
 |---------------| -----------------|
-|[Spotify_Tracks_Dataset.cvs](./https://raw.githubusercontent.com/jiajih16/DataLinks/main/Spotify%20_Tracks_Dataset.csv?token=GHSAT0AAAAAABZTEPKGXXENBIMBDJYDBX3KY3ILAIQ) | This file contains Spotify Tracks Dataset. (See report for details.)
+|[Spotify_Tracks_Dataset.cvs](./https://raw.githubusercontent.com/jiajih16/DataLinks/main/Spotify%20_Tracks_Dataset.csv?token=GHSAT0AAAAAABZTEPKGCHZB2C2SMVZWO7T6Y3ILG2A) | This file contains Spotify Tracks Dataset. (See report for details.)
 |[another-file](./filename2.csv) | Description ...
 
 ## Application Programming Interfaces (API) (TODO: Update/delete for your PROJECT)
