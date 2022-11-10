@@ -1,6 +1,6 @@
 ---
 title: "M-you-sic"
-author: "Olivia"
+author: "Olivia Sapp, Terra Shresths, Jeremy He, Harry Hall"
 date: "1/22/2022"
 output: html_document
 ---
