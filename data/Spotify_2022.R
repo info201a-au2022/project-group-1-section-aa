@@ -2,16 +2,19 @@ library("dplyr")
 library("stringr")
 library("tidyverse")
 
-# at the moment I am still trying to figure out how to put the data set into the GitHub
-# in the meantime you can follow these steps to get the data set and filter it down
-# to one data set that we can all use
+# I wanted to make our data set smaller so it could be easier to use
+# The full dataset is called charts.csv and the one I made is called spotify_2022.csv
+# this takes the spotify data set we had and filters it to only data from 2022
+# I used these steps to filter it down
+# YOU DO NOT NEED TO READ/DO THIS, I just want the record for myself
  
-# go to https://www.kaggle.com/datasets/jfreyberg/spotify-chart-data?resource=download
-# download the data set, I named mine 'charts.csv'
+# got the data from https://www.kaggle.com/datasets/jfreyberg/spotify-chart-data?resource=download
+# go to the GitHUb project repo, open data then open charts.csv
 
-# load the .csv into R studio
+# load the .csv into R studio, you can do this 1 of 2 ways
 #read.csv("the name of the .csv you downloaded from kaggle")
 spotiify_origional <- read.csv("charts.csv")
+spotiify_origional <- read.csv("https://raw.githubusercontent.com/info201a-au2022/project-group-1-section-aa/main/data/charts.csv")
 
 # filters down the data
 # removes the track id, explicit, and duration columns
@@ -25,6 +28,8 @@ spotify_2022 <- spotify_modify %>%
   arrange(date) %>% 
   group_by(date)
 
+# use write.csv() to turn the new dataset into a .csv file
+write.csv(Your DataFrame,"Path to export the DataFrame\\File Name.csv", row.names = FALSE)
+write.csv(spotify_2022, "/Users/oliviasapp/Documents/info201/project-group-1-section-aa/data/spotify_2022.csv" , row.names = FALSE)
 
-save(spotify_2022, file = "spotify_tracks_2022")
-
+# then I pushed the spotify_2022.csv to the GitHub repo
