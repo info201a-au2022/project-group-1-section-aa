@@ -7,11 +7,11 @@ library("tidyverse")
 # to one data set that we can all use
  
 # go to https://www.kaggle.com/datasets/jfreyberg/spotify-chart-data?resource=download
-# download the data set, I named mine 'Spotify tracks data.csv'
+# download the data set, I named mine 'charts.csv'
 
 # load the .csv into R studio
 #read.csv("the name of the .csv you downloaded from kaggle")
-spotiify_origional <- read.csv("Spotify tracks data.csv")
+spotiify_origional <- read.csv("charts.csv")
 
 # filters down the data
 # removes the track id, explicit, and duration columns
