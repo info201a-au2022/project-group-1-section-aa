@@ -91,8 +91,6 @@ abrevs$region <- str_replace(abrevs$region, "Macedonia, the former Yugoslav Repu
 # dataframe that will go into the map
 top_country.map <- left_join(world_map, abrevs, by = "region")
 
-plotclr <- c("yellow","blue")  #Choose the collors you want to plot
-
 # map of the world. Yellow countries listened to Pepas, blue countries did not
 # grey countries means we have no data
 # I NEED to fix the key on the side to be more clear
