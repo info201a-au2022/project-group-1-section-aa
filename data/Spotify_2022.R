@@ -49,11 +49,13 @@ col_chart <- ggplot(data = top_3) +
   theme(plot.title = element_text(hjust = 0.5))
 col_chart
 
+# Most popular 100 sgns in the globe
 top_100 <- spotify_2022_global[order(spotify_2022_global$streams, decreasing = TRUE), ]
 top_100 <- top_100[1:100, ]
 View(top_100)  
 top_100$streams <- as.numeric(top_100$streams)
 
+#scatter plot
 scatter_chart <- ggplot(data = top_100) +
   geom_point(mapping = aes(x = position, y = streams))
 scatter_chart <- scatter_chart + scale_y_continuous(limits = c(985000, 1000000)) 
