@@ -46,5 +46,5 @@ View(top_3)
 col_chart <- ggplot(data = top_3) + 
   geom_col(mapping = aes(x = name, y = streams)) +
   ggtitle("Top song's daily streamings across the globe") +
-  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(plot.title = element_text(hjust = 0.5))
 col_chart
