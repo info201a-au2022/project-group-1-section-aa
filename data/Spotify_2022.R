@@ -41,19 +41,23 @@ write.csv(spotify_2022, "/Users/oliviasapp/Documents/info201/project-group-1-sec
 # Most popular 3 songs in the globe
 top_3 <- spotify_2022_global[order(spotify_2022_global$streams, decreasing = TRUE), ]
 top_3 <- top_3[1:3, ]
+top_3$streams <- as.numeric(top_3$streams)
 View(top_3)  
 
+# bar chart
 col_chart <- ggplot(data = top_3) + 
   geom_col(mapping = aes(x = name, y = streams)) +
   ggtitle("Top song's daily streamings across the globe") +
   theme(plot.title = element_text(hjust = 0.5))
+col_chart <- col_chart + coord_cartesian(ylim = c(999000,1000000))
 col_chart
 
 # Most popular 100 sgns in the globe
 top_100 <- spotify_2022_global[order(spotify_2022_global$streams, decreasing = TRUE), ]
 top_100 <- top_100[1:100, ]
-View(top_100)  
 top_100$streams <- as.numeric(top_100$streams)
+View(top_100)  
+
 
 #scatter plot
 scatter_chart <- ggplot(data = top_100) +
