@@ -59,8 +59,22 @@ top_100$streams <- as.numeric(top_100$streams)
 View(top_100)  
 
 
-#scatter plot
+#Rough scatter plot Code
 scatter_chart <- ggplot(data = top_100) +
   geom_point(mapping = aes(x = position, y = streams))
 scatter_chart <- scatter_chart + scale_y_continuous(limits = c(985000, 1000000)) 
 scatter_chart
+
+#Final Scatter Plot Code
+scatter_chart <- ggplot(data = top_100, colour = position) +
+  geom_point(mapping = aes(x = position, y = streams)) + (aes(color = (position))) +
+  labs(
+    title =
+      "Relationship between Streams and Position on Top 200 Charts",
+    subtitle =
+      "Data Provided by Kaggle and Spotify",
+    caption = "Color Coding Refers To Top 200 Song Placement"
+  )
+scatter_chart <- scatter_chart + scale_y_continuous(limits = c(985000, 1000000)) 
+scatter_chart
+
