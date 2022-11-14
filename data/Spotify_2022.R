@@ -25,11 +25,26 @@ spotify_modify <- spotiify_origional %>%
 #this is the data set you should you on the project
 spotify_2022 <- spotify_modify %>% 
   filter(date >= "2022-01-01") %>% 
+  filter(country == "global") %>% 
   arrange(date) %>% 
   group_by(date)
+View(spotify_2022)
 
 # use write.csv() to turn the new dataset into a .csv file
 write.csv(Your DataFrame,"Path to export the DataFrame\\File Name.csv", row.names = FALSE)
 write.csv(spotify_2022, "/Users/oliviasapp/Documents/info201/project-group-1-section-aa/data/spotify_2022.csv" , row.names = FALSE)
 
 # then I pushed the spotify_2022.csv to the GitHub repo
+
+
+
+# Most popular 3 songs in the globe
+top_3 <- spotify_2022_global[order(spotify_2022_global$streams, decreasing = TRUE), ]
+top_3 <- top_3[1:3, ]
+View(top_3)  
+
+col_chart <- ggplot(data = top_3) + 
+  geom_col(mapping = aes(x = name, y = streams)) +
+  ggtitle("Top song's daily streamings across the globe") +
+  theme(plot.title = element_text(hjust = 0.5)) +
+col_chart
