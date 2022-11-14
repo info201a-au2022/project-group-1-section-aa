@@ -44,10 +44,18 @@ top_3 <- top_3[1:3, ]
 top_3$streams <- as.numeric(top_3$streams)
 View(top_3)  
 
-# bar chart
+# rough bar chart
 col_chart <- ggplot(data = top_3) + 
   geom_col(mapping = aes(x = name, y = streams)) +
   ggtitle("Top song's daily streamings across the globe") +
+  theme(plot.title = element_text(hjust = 0.5))
+col_chart <- col_chart + coord_cartesian(ylim = c(999000,1000000))
+col_chart
+
+#final bar chart
+col_chart <- ggplot(data = top_3) + 
+  geom_col(mapping = aes(x = name, y = streams)) +
+  ggtitle("Top Three Songs Daily Streamed Globally") +
   theme(plot.title = element_text(hjust = 0.5))
 col_chart <- col_chart + coord_cartesian(ylim = c(999000,1000000))
 col_chart
