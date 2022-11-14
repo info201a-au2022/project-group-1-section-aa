@@ -23,7 +23,7 @@ spotify_modify <- spotiify_origional %>%
 
 #returns all the data just from 2022
 #this is the data set you should you on the project
-spotify_2022 <- spotify_modify %>% 
+spotify_2022_global <- spotify_modify %>% 
   filter(date >= "2022-01-01") %>% 
   filter(country == "global") %>% 
   arrange(date) %>% 
