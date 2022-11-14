@@ -99,7 +99,7 @@ plotclr <- c("yellow","blue")  #Choose the collors you want to plot
 ggplot(top_country.map, aes(map_id = region, fill = yes_no))+
   geom_map(map = top_country.map,  color = "white")+
   expand_limits(x = top_country.map$long, y = top_country.map$lat)+
-  scale_fill_viridis_c(option = "C") +
-  ggtitle("Was the Global Top Song of 2022 (Pepas) Popular in these Countries?")
+  ggtitle("Was the Global Top Song of 2022 (Pepas) Popular in these Countries?") +
+  scale_fill_manual(values = c("dark red", "pink"))
 
 
