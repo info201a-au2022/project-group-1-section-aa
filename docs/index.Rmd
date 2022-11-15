@@ -1,7 +1,12 @@
 ---
 title: "M-you-sic"
+<<<<<<< HEAD
 author: "Olivia Sapp, Terra Shrestha, Jermey He, Harry Hall"
 date: "11/14/2022"
+=======
+author: "Olivia Sapp, Terra Shresths, Jeremy He, Harry Hall"
+date: "1/22/2022"
+>>>>>>> 389abf6a660c28e2d79a60cfc099e5e70d5b4b2e
 output: html_document
 ---
 
