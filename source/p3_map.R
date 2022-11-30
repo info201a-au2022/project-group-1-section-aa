@@ -56,13 +56,6 @@ ggplot(world_map, aes(x = long, y = lat, group = group)) +
   geom_polygon(fill="lightgray", colour = "white")
 
 # makes a list off all the countries where Pepas was popular this year
-top_country <- spotify_2022 %>% 
-  select(name, date, country) %>% 
-  filter(name == "Pepas") %>% 
-  filter(country != "global")
-top_country <- unique(top_country$country)
-top_country <- toupper(top_country) #capatalizes country codes
-
 pepas_streams <- spotify_2022 %>% 
   select(name, date, country, streams) %>% 
   filter(name == "Pepas") %>% 
@@ -72,10 +65,6 @@ pepas_streams <- spotify_2022 %>%
   rename(Code = country)  
 pepas_streams$Code <- toupper(pepas_streams$Code)
  
-
-# transitional data frame, assigns 1 to all the countries in top_country to record
-# which countries listened to Pepas
-#tc2 <- data.frame(Code = top_country , streams =  )
 
 # a new data frame that has all the abrevated country codes and the country names
 #abrevations <- read.csv("https://pkgstore.datahub.io/core/country-list/data_csv/data/d7c9d7cfb42cb69f4422dec222dbbaa8/data_csv.csv")
@@ -121,12 +110,11 @@ ggplot(top_country.map, aes(map_id = region, fill = streams))+
   expand_limits(x = top_country.map$long, y = top_country.map$lat)+
   ggtitle("How popular was the song Pepas in each country?") +
   scale_fill_continuous(type = "viridis") +
-  #scale_color_gradientn(colours = c("red", "green", "blue", "yellow")) +
   labs(fill = "Streams")
 
   # + blank_theme
 
-# gets rid of grid lines
+# gets rid of grid lines, I'll maybe use this later
 blank_theme <- theme_bw() +
   theme(
     axis.line = element_blank(),        # remove axis lines
