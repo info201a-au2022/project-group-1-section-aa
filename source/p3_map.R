@@ -109,10 +109,9 @@ ggplot(top_country.map, aes(map_id = region, fill = streams))+
   geom_map(map = top_country.map,  color = "white")+
   expand_limits(x = top_country.map$long, y = top_country.map$lat)+
   ggtitle("How popular was the song Pepas in each country?") +
-  scale_fill_continuous(type = "viridis") +
-  labs(fill = "Streams")
-
-  # + blank_theme
+  scale_fill_continuous(type = "viridis", labels = comma) +
+  labs(fill = "Streams") +
+  blank_theme
 
 # gets rid of grid lines, I'll maybe use this later
 blank_theme <- theme_bw() +
