@@ -61,6 +61,24 @@ abrevations <- read.csv("wikipedia-iso-country-codes.csv")
 # shortens abreviations to only include names and 2 char codes
 abrevations <- abrevations %>% 
   select(region = English.short.name.lower.case, Code = Alpha.2.code)
+abrevations <- abrevations %>% 
+  select(region = English.short.name.lower.case, Code = Alpha.2.code)
+abrevations$region <- str_replace(abrevations$region, "United States Of America", "USA")
+abrevations$region <- str_replace(abrevations$region, "Libyan Arab Jamahiriya", "Libya")
+abrevations$region <- str_replace(abrevations$region, "Côte d'Ivoire", "Ivory Coast")
+abrevations$region <- str_replace(abrevations$region, "Tanzania, United Republic of", "Tanzania")
+abrevations$region <- str_replace(abrevations$region, "Republic of Democratic Republic of the Congo", "Democratic Republic of the Congo")
+abrevations$region <- str_replace(abrevations$region, "Congo", "Republic of Congo")
+abrevations$region <- str_replace(abrevations$region, "Republic of Republic of Republic of Congo", "Republic of Congo")
+abrevations$region <- str_replace(abrevations$region, "South Sudan", "Sudan") 	
+abrevations$region <- str_replace(abrevations$region, "Syrian Arab Republic", "Syria")
+abrevations$region <- str_replace(abrevations$region, "Korea, Democratic People's Republic of", "North Korea")
+abrevations$region <- str_replace(abrevations$region, "Korea, Republic of (South Korea)", "South Korea")
+abrevations$region <- str_replace(abrevations$region, "Lao People's Democratic Republic", "Laos")
+abrevations$region <- str_replace(abrevations$region, "United Kingdom", "UK")
+abrevations$region <- str_replace(abrevations$region, "Moldova, Republic of", "Moldova")
+abrevations$region <- str_replace(abrevations$region, "Macedonia, the former Yugoslav Republic of", "North Macedonia")
+
 
 # makes a list off all the countries where the song was popular this year
 get_song_streams <- function(song_name) {
@@ -77,23 +95,6 @@ get_song_streams <- function(song_name) {
   # if a country listened to Peopas they get a 1, if not they get a 0
   abrevs <- left_join(abrevations, song_streams, by = "Code") %>% 
     replace(is.na(.), 0)
-  
-  # fixes some of the names of the countries in abrevs so they match the countries in world_map
-  abrevs$region <- str_replace(abrevs$region, "United States Of America", "USA")
-  abrevs$region <- str_replace(abrevs$region, "Libyan Arab Jamahiriya", "Libya")
-  abrevs$region <- str_replace(abrevs$region, "Côte d'Ivoire", "Ivory Coast")
-  abrevs$region <- str_replace(abrevs$region, "Tanzania, United Republic of", "Tanzania")
-  abrevs$region <- str_replace(abrevs$region, "Republic of Democratic Republic of the Congo", "Democratic Republic of the Congo")
-  abrevs$region <- str_replace(abrevs$region, "Congo", "Republic of Congo")
-  abrevs$region <- str_replace(abrevs$region, "Republic of Republic of Republic of Congo", "Republic of Congo")
-  abrevs$region <- str_replace(abrevs$region, "South Sudan", "Sudan") 	
-  abrevs$region <- str_replace(abrevs$region, "Syrian Arab Republic", "Syria")
-  abrevs$region <- str_replace(abrevs$region, "Korea, Democratic People's Republic of", "North Korea")
-  abrevs$region <- str_replace(abrevs$region, "Korea, Republic of (South Korea)", "South Korea")
-  abrevs$region <- str_replace(abrevs$region, "Lao People's Democratic Republic", "Laos")
-  abrevs$region <- str_replace(abrevs$region, "United Kingdom", "UK")
-  abrevs$region <- str_replace(abrevs$region, "Moldova, Republic of", "Moldova")
-  abrevs$region <- str_replace(abrevs$region, "Macedonia, the former Yugoslav Republic of", "North Macedonia")
  
    # dataframe that will go into the map
   top_country.map <- left_join(world_map, abrevs, by = "region")
