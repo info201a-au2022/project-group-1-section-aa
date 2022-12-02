@@ -119,8 +119,9 @@ plot_song_map <- function(song_name){
   # map of the world. Yellow countries listened to Blenk Space, blue countries did not
   # grey countries means we have no data
   plot<- ggplot(get_song_streams(song_name), aes(map_id = region, fill = streams))+
-    geom_map(map = top_country.map,  color = "white")+
-    expand_limits(x = top_country.map$long, y = top_country.map$lat)+
+    geom_map(map = get_song_streams(song_name),  color = "white")+
+    expand_limits(x = get_song_streams(song_name)$long, 
+                  y = get_song_streams(song_name)$lat)+
     ggtitle(paste("How popular was the song", song_name, "in each country?")) +
     scale_fill_continuous(type = "viridis", labels = comma) +
     labs(fill = "Streams") + 
