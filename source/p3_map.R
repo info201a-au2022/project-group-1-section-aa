@@ -61,8 +61,8 @@ abrevations <- read.csv("wikipedia-iso-country-codes.csv")
 # shortens abreviations to only include names and 2 char codes
 abrevations <- abrevations %>% 
   select(region = English.short.name.lower.case, Code = Alpha.2.code)
-abrevations <- abrevations %>% 
-  select(region = English.short.name.lower.case, Code = Alpha.2.code)
+#abrevations <- abrevations %>% 
+ # select(region = Name, Code)
 abrevations$region <- str_replace(abrevations$region, "United States Of America", "USA")
 abrevations$region <- str_replace(abrevations$region, "Libyan Arab Jamahiriya", "Libya")
 abrevations$region <- str_replace(abrevations$region, "Côte d'Ivoire", "Ivory Coast")
@@ -117,7 +117,7 @@ blank_theme <- theme_bw() +
   )
 
 plot_song_map <- function(song_name){
-  # map of the world. Yellow countries listened to Blenk Space, blue countries did not
+  # map of the world. Yellow countries listened the song, blue countries did not
   # grey countries means we have no data
   plot<- ggplot(get_song_streams(song_name), aes(map_id = region, fill = streams))+
     geom_map(map = get_song_streams(song_name),  color = "white")+
