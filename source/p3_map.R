@@ -4,7 +4,7 @@ library("tidyverse")
 library("scales")
 library("ggplot2")
 library("maps")
-library("scales")
+
 
 
 # load the .csv into R studio, you can do this 1 of 2 ways
