@@ -27,7 +27,7 @@ my_ui <- navbarPage(
             who fit into an acceptable genre are compensated versus those who fall through the cracks. The main cause of this disconnect is the misanalysis of, or a failure to even see, various subgenres of 
             music styles. That is one of the main harms in the creation of this algorithm. Benefits would fall upon popular artists and the direct stakeholders because they only see who they like and the popular 
             artists can make more money. As you can see in the graphic above, the streaming sites take up a large majority of the music industry. As a result of this, this algorithm has the potential to make unpopular artists less popular and popular artists rise to the top, creating a big gap. However our main goal is to learn how we take data from active listeners to give them a recommended playlist; For example, what BPM do they listen to, what is their favorite artist, do they like similar songs. We will take on the challenge of understanding how the recommended playlist works so we can benefit the direct stakeholders and indirect stakeholders."),
-    
+    ),
     tabPanel(
         "Background & Research Questions",
         tabsetPanel(type = "tab",
