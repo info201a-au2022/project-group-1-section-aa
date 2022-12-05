@@ -16,8 +16,17 @@ my_ui <- navbarPage(
         img(src = "https://ggsc.s3.amazonaws.com/images/uploads/Four_people_listening_to_music.jpg", height="50%", width="50%", align="left"),
         img(src = "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Spotify_App_Logo.svg/2048px-Spotify_App_Logo.svg.png", height="20%", width="31%", align="button right"),
         h3(""),
-        h3("We will be addressing the problem by visualizing the trends of car accidents throughout the decades of F1. By showcasing the trend and providing a universal point for all of the data, the direct workers for F1 can look into this data and see where their new measures were effective and ineffective for increasing safety for drivers. We will also be data wrangling the different dataset from each decade of F1 and join them by their ID column to compare the data."),
-    ),
+        h3("In the past generation of music, becoming discovered as a new artist was a very hard feat to accomplish. However, over the past few years, streaming services have made this feat 
+            easier to accomplish by using data sets collected by users' interactions to recommend new artists and songs. “Yet, as algorithmic recommendations take center stage in the music 
+            discovery landscape, the professional community at large still perceives these recommender algorithms as black boxes.”(Jones, Morgan) Music professionals rely on recommender systems 
+            across platforms like Spotify and YouTube to increase the ad budgets, connect with new audiences, and all-around execute successful release campaigns. While often having no clear vision 
+            of how these systems operate and how to leverage them to amplify artist discovery. The topic of unveiling AI-driven recommender systems and providing music professionals with the resources 
+            and tools they need to understand and manage these algorithms will be a big focus for Music Tomorrow throughout 2022. Our focus for this project is to figure out how these recommendation
+            playlists are created and how they affect the direct and indirect stakeholders. Possible harms to the stakeholders are the accessibility issues. No matter what your favorite genre is, chances 
+            are your information is accessed and most data falls through a crack in the process, music services are afflicted by a data gap. This impacts not only how music cultures evolve, but how artists 
+            who fit into an acceptable genre are compensated versus those who fall through the cracks. The main cause of this disconnect is the misanalysis of, or a failure to even see, various subgenres of 
+            music styles. That is one of the main harms in the creation of this algorithm. Benefits would fall upon popular artists and the direct stakeholders because they only see who they like and the popular 
+            artists can make more money. As you can see in the graphic above, the streaming sites take up a large majority of the music industry. As a result of this, this algorithm has the potential to make unpopular artists less popular and popular artists rise to the top, creating a big gap. However our main goal is to learn how we take data from active listeners to give them a recommended playlist; For example, what BPM do they listen to, what is their favorite artist, do they like similar songs. We will take on the challenge of understanding how the recommended playlist works so we can benefit the direct stakeholders and indirect stakeholders."),
     
     tabPanel(
         "Background & Research Questions",
