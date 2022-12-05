@@ -2,8 +2,8 @@ library(shiny)
 source("ui.R")
 
 my_server <- function(input, output) {
-    spotiify_origional <- read.csv("https://raw.githubusercontent.com/info201a-au2022/project-group-1-section-aa/main/data/charts.csv")
     output$geo_map <- renderPlotly({
+        spotiify_origional <- read.csv("https://raw.githubusercontent.com/info201a-au2022/project-group-1-section-aa/main/data/charts.csv")
         spotify_modify <- spotiify_origional %>% 
             select(name, country, date, position, streams, artists, genres = artist_genres)
         
