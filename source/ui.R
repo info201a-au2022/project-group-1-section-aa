@@ -108,6 +108,13 @@ my_ui <- navbarPage(
         fluidPage(
             titlePanel("Popularity of Songs Around the Globe"),
             mainPanel(
+                selectInput("select", label = h3("Song Choices"), 
+                    choices = list("Pepas" = 1, "Blank Space" = 2, 
+                                   "I’m Tired (with Zendaya) - Bonus Track" = 3,
+                                   "Yonaguni" = 4, "Heather" = 5), 
+                    selected = 1),
+                hr(),
+                fluidRow(column(5, verbatimTextOutput("song_name"))),
                 plotOutput(outputId = "map_graph")
             ),
         ),
