@@ -2,6 +2,7 @@ library(shiny)
 source("ui.R")
 
 my_server <- function(input, output) {
+    spotiify_origional <- read.csv("https://raw.githubusercontent.com/info201a-au2022/project-group-1-section-aa/main/data/charts.csv")
     output$geo_map <- renderPlotly({
         spotify_modify <- spotiify_origional %>% 
             select(name, country, date, position, streams, artists, genres = artist_genres)
@@ -47,6 +48,7 @@ my_server <- function(input, output) {
     })
     
     output$line_chart <- renderPlotly({
+        spotiify_origional <- read.csv("https://raw.githubusercontent.com/info201a-au2022/project-group-1-section-aa/main/data/charts.csv")
         spotify_modify <- spotiify_origional %>% 
             select(name, country, date, position, streams, artists, genres = artist_genres)
         
@@ -98,7 +100,7 @@ my_server <- function(input, output) {
     })
     
     output$map_graph <- renderPlot({
-        
+        spotiify_origional <- read.csv("https://raw.githubusercontent.com/info201a-au2022/project-group-1-section-aa/main/data/charts.csv")
         spotify_modify <- spotiify_origional %>% 
             select(name, country, date, position, streams, artists, genres = artist_genres)
         #returns all the data just from 2022
