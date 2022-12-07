@@ -1,130 +1,103 @@
 library(shiny)
-source("ui.R")
+source("app_ui.R")
+
 spotiify_origional <- read.csv("https://raw.githubusercontent.com/info201a-au2022/project-group-1-section-aa/main/data/charts.csv")
+#spotiify_origional <- read.csv("charts.csv")
 
+# selects important columns
+spotify_modify <- spotiify_origional %>% 
+  dplyr::select(name, country, date, position, streams, artists, genres = artist_genres)
 
-my_server <- function(input, output) {
-    output$geo_map <- renderPlotly({
-        spotify_modify <- spotiify_origional %>% 
-            dplyr::select(name, country, date, position, streams, artists, genres = artist_genres)
-        
-        #returns all the data just from 2022
-        #this is the data set you should you on the project
-        spotify_2022 <- spotify_modify %>% 
-            filter(date >= "2022-01-01") %>% 
-            arrange(date) %>% 
-            group_by(date)
-        
-        spotify_2022_global <- spotify_modify %>% 
-            filter(date >= "2022-01-01") %>% 
-            filter(country == "global") %>% 
-            arrange(date) %>% 
-            group_by(streams)
-        
-        top_15 <- spotify_2022_global[order(spotify_2022_global$streams, decreasing = TRUE), ]
-        top_15 <- unique(top_15[1:15,])
-        top_15$streams <- as.numeric(top_15$streams)
-        
-        top_15 <- top_15 %>% 
-            separate(genres, c("genres"), sep = ',')
-        top_15$genres <- gsub("]|\\[|[']","",as.character(top_15$genres))
-        
-        col_chart <- ggplot(data = top_15) + geom_col(mapping = aes(x = name, y = streams, fill = genres)) +   
-            ggtitle("Top 15 Songs Daily Streamed Globally") + 
-            theme(plot.title = element_text(hjust = 0.5), axis.text.x = element_text(angle = 45, hjust = 1)) + 
-            coord_cartesian(ylim = c(995000,1000000))
-        col_chart
-        
-        col_chart <- ggplot(data = top_15) + geom_col(mapping = aes(x = name, y = streams, fill = genres)) +   
-            labs(x = "Name",
-                 y = "Streams",
-                 title = "Top 15 Songs Daily Streamed Globally in 2020",
-                 caption = "Note: The song 'Something Just Like This' appears twice in the top daily streams data"
-            ) +   theme(plot.caption = element_text(hjust=0)) +
-            theme(plot.title = element_text(hjust = 0.5), axis.text.x = element_text(angle = 45, hjust = 1)) + 
-            coord_cartesian(ylim = c(995000,1000000))
-        col_chart
-        
-        ggplotly(col_chart)
-    })
-    
-    output$line_chart <- renderPlotly({
-        spotify_modify <- spotiify_origional %>% 
-            dplyr::select(name, country, date, position, streams, artists, genres = artist_genres)
-        
-        spotify_2022 <- spotify_modify %>% 
-            filter(date >= "2022-01-01") %>% 
-            arrange(date) %>% 
-            group_by(date)
-        
-        spotify_2022_global <- spotify_modify %>% 
-            filter(date >= "2022-09-17") %>%
-            filter(date <= "2022-09-29") %>% 
-            filter(country == "global") %>% 
-            filter(name =="Blank Space") %>% 
-            mutate(date = as.Date(date)) %>% 
-            mutate(streams = as.numeric(streams)) %>% 
-            arrange(date) %>% 
-            group_by(streams)
-        
-        spotify_2022_global1 <- spotify_modify %>% 
-            filter(date >= "2022-09-17") %>%
-            filter(date <= "2022-09-29") %>% 
-            filter(country == "global") %>% 
-            mutate(date = as.Date(date)) %>% 
-            filter(name == "Don't Start Now") %>% 
-            mutate(streams = as.numeric(streams)) %>% 
-            arrange(date) %>% 
-            group_by(streams)
-        
-        spotify_2022_global2 <- spotify_modify %>% 
-            filter(date >= "2022-09-17") %>%
-            filter(date <= "2022-09-29") %>% 
-            filter(country == "global") %>% 
-            mutate(date = as.Date(date)) %>% 
-            filter(name == "Levitating (feat. DaBaby)") %>% 
-            mutate(streams = as.numeric(streams)) %>% 
-            arrange(date) %>% 
-            group_by(streams)
-        
-        stream_3 <- ggplot() + 
-            geom_line(data=spotify_2022_global, aes(x=date, y=streams, group=1, color="Blank Space",)) + 
-            geom_line(data=spotify_2022_global1, aes(x=date, y=streams, group=2, color="Don't Start Now")) + 
-            geom_line(data=spotify_2022_global2, aes(x=date, y=streams, group=3, color="Levitating (feat. DaBaby)")) + 
-            scale_color_manual(name = "Song Name", values = c("Blank Space" = "darkblue", "Don't Start Now" = "red", "Levitating (feat. DaBaby)" = "green")) +
-            xlab("Date(2022)") + ylab("Amount of Streams") +
-            ggtitle("Three Songs Top Consecutive Streaming Days")
-        stream_3
-        
-        ggplotly(stream_3)
-    })
-    
-   output$map_graph <- renderPlot({
-    spotify_modify <- spotiify_origional %>% 
-      dplyr::select(name, country, date, position, streams, artists, genres = artist_genres)
-    #returns all the data just from 2022
-    #this is the data set you should you on the project
-    spotify_2022 <- spotify_modify %>% 
-      filter(date >= "2022-01-01") %>% 
-      arrange(date) %>% 
-      group_by(date)
-    spotify_2022$streams <- as.numeric(spotify_2022$streams)
+# returns all the data just from 2022
+# this is the data set we on the project
+spotify_2022 <- spotify_modify %>% 
+  filter(date >= "2022-01-01") %>% 
+  arrange(date) %>% 
+  group_by(date)
+spotify_2022$streams <- as.numeric(spotify_2022$streams)
+
+server <- function(input, output) {
+  output$geo_map <- renderPlotly({
     
     spotify_2022_global <- spotify_modify %>% 
       filter(date >= "2022-01-01") %>% 
       filter(country == "global") %>% 
       arrange(date) %>% 
-      group_by(date)
+      group_by(streams)
     
-    # top 5 most popular songs globally 
-    top_5 <- spotify_2022_global[order(spotify_2022_global$streams, decreasing = TRUE), ]
-    top_5 <- top_5[1:5, ]
-    top_5$streams <- as.numeric(top_5$streams)
+    top_15 <- spotify_2022_global[order(spotify_2022_global$streams, decreasing = TRUE), ]
+    top_15 <- unique(top_15[1:15,])
+    top_15$streams <- as.numeric(top_15$streams)
     
-    # Pepas, Blank Space, I'm Tired, Yonaguni, and Heather
-    # were the most streamed song of the year according to top_5
+    top_15 <- top_15 %>% 
+      separate(genres, c("genres"), sep = ',')
+    top_15$genres <- gsub("]|\\[|[']","",as.character(top_15$genres))
     
-    # Map code        
+    col_chart <- ggplot(data = top_15) + geom_col(mapping = aes(x = name, y = streams, fill = genres)) +   
+      ggtitle("Top 15 Songs Daily Streamed Globally") + 
+      theme(plot.title = element_text(hjust = 0.5), axis.text.x = element_text(angle = 45, hjust = 1)) + 
+      coord_cartesian(ylim = c(995000,1000000))
+    col_chart
+    
+    col_chart <- ggplot(data = top_15) + geom_col(mapping = aes(x = name, y = streams, fill = genres)) +   
+      labs(x = "Name",
+           y = "Streams",
+           title = "Top 15 Songs Daily Streamed Globally in 2020",
+           caption = "Note: The song 'Something Just Like This' appears twice in the top daily streams data"
+      ) +   theme(plot.caption = element_text(hjust=0)) +
+      theme(plot.title = element_text(hjust = 0.5), axis.text.x = element_text(angle = 45, hjust = 1)) + 
+      coord_cartesian(ylim = c(995000,1000000))
+    col_chart
+    
+    ggplotly(col_chart)
+  })
+  
+  output$line_chart <- renderPlotly({
+    
+    spotify_2022_global <- spotify_modify %>% 
+      filter(date >= "2022-09-17") %>%
+      filter(date <= "2022-09-29") %>% 
+      filter(country == "global") %>% 
+      filter(name =="Blank Space") %>% 
+      mutate(date = as.Date(date)) %>% 
+      mutate(streams = as.numeric(streams)) %>% 
+      arrange(date) %>% 
+      group_by(streams)
+    
+    spotify_2022_global1 <- spotify_modify %>% 
+      filter(date >= "2022-09-17") %>%
+      filter(date <= "2022-09-29") %>% 
+      filter(country == "global") %>% 
+      mutate(date = as.Date(date)) %>% 
+      filter(name == "Don't Start Now") %>% 
+      mutate(streams = as.numeric(streams)) %>% 
+      arrange(date) %>% 
+      group_by(streams)
+    
+    spotify_2022_global2 <- spotify_modify %>% 
+      filter(date >= "2022-09-17") %>%
+      filter(date <= "2022-09-29") %>% 
+      filter(country == "global") %>% 
+      mutate(date = as.Date(date)) %>% 
+      filter(name == "Levitating (feat. DaBaby)") %>% 
+      mutate(streams = as.numeric(streams)) %>% 
+      arrange(date) %>% 
+      group_by(streams)
+    
+    stream_3 <- ggplot() + 
+      geom_line(data=spotify_2022_global, aes(x=date, y=streams, group=1, color="Blank Space",)) + 
+      geom_line(data=spotify_2022_global1, aes(x=date, y=streams, group=2, color="Don't Start Now")) + 
+      geom_line(data=spotify_2022_global2, aes(x=date, y=streams, group=3, color="Levitating (feat. DaBaby)")) + 
+      scale_color_manual(name = "Song Name", values = c("Blank Space" = "darkblue", "Don't Start Now" = "red", "Levitating (feat. DaBaby)" = "green")) +
+      xlab("Date(2022)") + ylab("Amount of Streams") +
+      ggtitle("Three Songs Top Consecutive Streaming Days")
+    stream_3
+    
+    ggplotly(stream_3)
+  })
+  
+  output$map_graph <- renderPlot({
+    
     # makes the map template
     world_map <- map_data("world")
     ggplot(world_map, aes(x = long, y = lat, group = group)) +
@@ -137,8 +110,8 @@ my_server <- function(input, output) {
     abrevations <- abrevations %>% 
       dplyr::select(region = Name, Code)
     
-    # fixes some of the names of the countries in abrevations so they match the countries in world_map in the  get_song_streams function
-    
+    # fixes some of the names of the countries in abrevations so they match the 
+    # countries in world_map in the get_song_streams function
     abrevations$region <- str_replace(abrevations$region, "United States", "USA")
     abrevations$region <- str_replace(abrevations$region, "Libyan Arab Jamahiriya", "Libya")
     abrevations$region <- str_replace(abrevations$region, "Côte d'Ivoire", "Ivory Coast")
@@ -161,7 +134,6 @@ my_server <- function(input, output) {
     abrevations$region <- str_replace(abrevations$region, "Macedonia, the Former Yugoslav Republic of", "North Macedonia")
     
     
-    
     # makes a list off all the countries where the song was popular this year
     get_song_streams <- function(song_name) {
       song_streams <- spotify_2022 %>% 
@@ -171,19 +143,19 @@ my_server <- function(input, output) {
         group_by(country) %>% 
         summarize(streams = sum(streams)) %>% 
         rename(Code = country)  
-      song_streams$Code <- toupper(song_streams$Code) #capatalizes country codes
+      song_streams$Code <- toupper(song_streams$Code) #capitalizes country codes
       
-      # data frame that joins abrevations with the modified countries that listened to a song
+      # data frame that joins abrevations with the names of country that listened to the song
       abrevs <- left_join(abrevations, song_streams, by = "Code") %>% 
         replace(is.na(.), 0)
       
-      # dataframe that will go into the map
+      # data frame that will go into the map, adds lat/long coordinates 
       top_country.map <- left_join(world_map, abrevs, by = "region")
       
       return(top_country.map)
     }
     
-    # gets rid of grid lines
+    # gets rid of grid lines n the map
     blank_theme <- theme_bw() +
       theme(
         axis.line = element_blank(),        # remove axis lines
@@ -195,32 +167,18 @@ my_server <- function(input, output) {
         panel.grid.minor = element_blank(), # remove minor grid lines
         panel.border = element_blank()      # remove border around plot
       )
-    
-    # plot_song_map <- function(input){
-    #   # map of the world. Yellow countries listened to the song a lot, blue countries did not
-    #   # grey countries means we have no data
-    #   plot<- ggplot(get_song_streams(input$song_name), aes(map_id = region, fill = streams))+
-    #     geom_map(map = get_song_streams(input$song_name),  color = "white")+
-    #     expand_limits(x = get_song_streams(input$song_name)$long, 
-    #                   y = get_song_streams(input$song_name)$lat)+
-    #     ggtitle(paste("How popular was the song", input$song_name, "in each country?")) +
-    #     scale_fill_continuous(type = "viridis", labels = comma) +
-    #     labs(fill = "Streams") + 
-    #     blank_theme
-    #   return(plot)
-    # }
-    
   
+    #plots the map
     ggplot(get_song_streams(input$song_name), aes(map_id = region, fill = streams))+
       geom_map(map = get_song_streams(input$song_name),  color = "white")+
       expand_limits(x = get_song_streams(input$song_name)$long, 
                     y = get_song_streams(input$song_name)$lat)+
-      ggtitle(paste("How popular was the song", input$song_name, "in each country?")) +
+      ggtitle(paste("How popular was the song", input$song_name,"in each country?")) +
       scale_fill_continuous(type = "viridis", labels = comma) +
       labs(fill = "Streams") + 
       blank_theme
     
   })
-    
-    
+  
+  
 }
