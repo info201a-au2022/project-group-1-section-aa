@@ -106,18 +106,17 @@ my_ui <- navbarPage(
     tabPanel(
         "Vis3: Map graph",
         fluidPage(
-            titlePanel("Popularity of Songs Around the Globe"),
-            mainPanel(
-                selectInput("select", label = h3("Song Choices"), 
-                    choices = list("Pepas" = 1, "Blank Space" = 2, 
-                                   "I’m Tired (with Zendaya) - Bonus Track" = 3,
-                                   "Yonaguni" = 4, "Heather" = 5), 
+      titlePanel("Popularity of Songs Around the Globe"),
+      mainPanel(
+        selectInput("song_name", label = h3("Song Choices"), 
+                    choices = list("Pepas", "Blank Space", 
+                                   "I’m Tired (with Zendaya) - Bonus Track",
+                                   "Yonaguni", "Heather"), 
                     selected = 1),
-                hr(),
-                fluidRow(column(5, verbatimTextOutput("song_name"))),
-                plotOutput(outputId = "map_graph")
-            ),
-        ),
+        hr(),
+        plotOutput(outputId = "map_graph")
+      ),
+    ),
         h3("This map of the world shades in each country based on how many streams it had in 2022 for a particular song. If a country is yellow they streamed the song a lot, 
            if the country is purple the country did not stream the song that much, and if the country is gray we have no data. 
            The user can choose to look at one of 5 popular songs from 2022. This map tries to answer the question: How popular were certain songs in different countries? 
