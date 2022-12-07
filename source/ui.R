@@ -109,9 +109,12 @@ my_ui <- navbarPage(
       titlePanel("Popularity of Songs Around the Globe"),
       mainPanel(
         selectInput("song_name", label = h3("Song Choices"), 
-                    choices = list("Pepas", "Blank Space", 
-                                   "I’m Tired (with Zendaya) - Bonus Track",
-                                   "Yonaguni", "Heather"), 
+                    choices = list("About Damn Time", "Bad Decisions (with BTS & Snoop Dogg)", "Blank Space",
+                                   "Enemy (with JID) - from the series Arcane League of Legends",
+                                   "Heather", "I’m Tired (with Zendaya) - Bonus Track",
+                                   "La Corriente", "Last Christmas", "Pepas", "Perfect",
+                                   "Something Just Like This", "The Happiest Girl",
+                                   "The Real Slim Shady", "Viva La Vida", "Yonaguni"),  
                     selected = 1),
         hr(),
         plotOutput(outputId = "map_graph")
