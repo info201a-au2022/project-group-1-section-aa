@@ -6,7 +6,7 @@ spotiify_origional <- read.csv("https://raw.githubusercontent.com/info201a-au202
 my_server <- function(input, output) {
     output$geo_map <- renderPlotly({
         spotify_modify <- spotiify_origional %>% 
-            select(name, country, date, position, streams, artists, genres = artist_genres)
+            dplyr::select(name, country, date, position, streams, artists, genres = artist_genres)
         
         #returns all the data just from 2022
         #this is the data set you should you on the project
@@ -50,7 +50,7 @@ my_server <- function(input, output) {
     
     output$line_chart <- renderPlotly({
         spotify_modify <- spotiify_origional %>% 
-            select(name, country, date, position, streams, artists, genres = artist_genres)
+            dplyr::select(name, country, date, position, streams, artists, genres = artist_genres)
         
         spotify_2022 <- spotify_modify %>% 
             filter(date >= "2022-01-01") %>% 
