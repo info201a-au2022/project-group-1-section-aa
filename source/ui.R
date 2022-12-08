@@ -16,18 +16,13 @@ ui <- navbarPage(
     img(src = "https://ggsc.s3.amazonaws.com/images/uploads/Four_people_listening_to_music.jpg", height="50%", width="50%", align="left"),
     img(src = "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Spotify_App_Logo.svg/2048px-Spotify_App_Logo.svg.png", height="20%", width="31%", align="button right"),
     h3(""),
-    h3("In the past generation of music, becoming discovered as a new artist was a very hard feat to accomplish. However, over the past few years, streaming services have made this feat 
-            easier to accomplish by using data sets collected by users' interactions to recommend new artists and songs. “Yet, as algorithmic recommendations take center stage in the music 
-            discovery landscape, the professional community at large still perceives these recommender algorithms as black boxes.”(Jones, Morgan) Music professionals rely on recommender systems 
-            across platforms like Spotify and YouTube to increase the ad budgets, connect with new audiences, and all-around execute successful release campaigns. While often having no clear vision 
-            of how these systems operate and how to leverage them to amplify artist discovery. The topic of unveiling AI-driven recommender systems and providing music professionals with the resources 
-            and tools they need to understand and manage these algorithms will be a big focus for Music Tomorrow throughout 2022. Our focus for this project is to figure out how these recommendation
-            playlists are created and how they affect the direct and indirect stakeholders. Possible harms to the stakeholders are the accessibility issues. No matter what your favorite genre is, chances 
-            are your information is accessed and most data falls through a crack in the process, music services are afflicted by a data gap. This impacts not only how music cultures evolve, but how artists 
-            who fit into an acceptable genre are compensated versus those who fall through the cracks. The main cause of this disconnect is the misanalysis of, or a failure to even see, various subgenres of 
-            music styles. That is one of the main harms in the creation of this algorithm. Benefits would fall upon popular artists and the direct stakeholders because they only see who they like and the popular 
-            artists can make more money. As you can see in the graphic above, the streaming sites take up a large majority of the music industry. As a result of this, this algorithm has the potential to make unpopular artists less popular and popular artists rise to the top, creating a big gap. However our main goal is to learn how we take data from active listeners to give them a recommended playlist; For example, what BPM do they listen to, what is their favorite artist, do they like similar songs. We will take on the challenge of understanding how the recommended playlist works so we can benefit the direct stakeholders and indirect stakeholders."),
-  ),
+    h3("In the past generation, getting discovered as an artist was difficult to accomplish. But with the use streaming services, it has been simple for individuals to explore upcoming artists and songs.
+        Although it has been easier to do so, finding new songs can be a challenge, since music is a diverse concept. One of the most popular streaming services, Spotify, contains large amounts of data.
+        While many have no clear vision of how these systems operate, along with utalizing them to amplify artist discovery, it is important to expose artists to music listeners. Our focus is to figure 
+        out the most popular songs around the globe in 2022, and to find out whether there is an association with demographic location and song popularity. In order to analyze our focus, the data collectection came
+        directly from a Spotify dataset. The dataset contained crucial information including songs, artists, location, and streams. We specifically chose to analyze 2022, since it is the most recent year. Nonetheless,
+        the goal of this project is to introduce listeners to a wider persepctive, especially when it comes to cultural awareness.
+
   tabPanel(
     "Background & Research Questions",
     tabsetPanel(type = "tab",
