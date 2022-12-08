@@ -32,17 +32,14 @@ ui <- navbarPage(
                              some may say that they have already heard the recommendations. We wanted to reinvent 
                              the music recommendation process. Our project uses a data set from Kaggle that tracks popular songs 
                              from around the globe that were listened to on Spotify. 
-                                The website that was developed helps people find new artists and music to listen to based on songs, artists, and genres they already like. 
-                                Additionally, it shows different songs that are trending around the globe. 
-                                The graphics break down the stats of popular songs and artists in different countries, along with an interactive option.")
+                             The website that was developed helps people find new artists and music to listen to based on songs, artists, and genres they already like. 
+                             Additionally, it shows different songs that are trending around the globe. 
+                             The graphics break down the stats of popular songs and artists in different countries, along with an interactive option.")
                 ),
                 tabPanel("Research questions",
-                         h3("- Our main question is how do we take data from active listeners to give them a recommended playlist; 
-                                For example, what BPM do they listen to, what is their favorite artist, do they like similar songs"),
-                         h3("- We are concerned with finding popular songs across different countries because we want to know if music taste 
-                                can span cultures and languages. To address this we can filter the data to find the most popular songs, genres, 
-                                and artists by country. "),
-                         h3("- Another research question we want to explore is how to provide equal opportunities to every artist within the platform. ")
+                         h3("- How do we take data from active listeners to give them a recommended playlist?"),
+                         h3("- Does music taste span cultures and languages, based on popular music in different countries?"),
+                         h3("- How do we, as users, expand our listening prefrences, according to genre?")
                 )
                 
     )
