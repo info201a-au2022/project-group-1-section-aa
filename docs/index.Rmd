@@ -90,7 +90,6 @@ col_chart
 
 The bar chart we have created compares the three most popular songs and how many streams they have on a daily basis. The most interesting thing about the bar chart is that two of the three songs have the same genre “pop”, and the other falls in the “latin hip hop” genre. The genres may have correlation to the popularity of songs in the top 100 we feel from this first data visualization. Over the next two charts we will explore more about favorite genres across the globe and not just the relationship between the top 3.
 
-
 ### Chart 2: Mapping
 ```{r, echo=FALSE}
 source("../source/mapping_chart.R")
