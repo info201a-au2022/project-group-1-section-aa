@@ -27,19 +27,14 @@ ui <- navbarPage(
     "Background & Research Questions",
     tabsetPanel(type = "tab",
                 tabPanel("Background",
-                         h3("Finding new music to listen to seems to be a constant struggle. 
-                             Sure streaming platforms all have their own recommendation algorithms, 
-                             but it feels like you've heard all these songs before. We wanted to reinvent 
-                             the music recommendation process. Our project uses a data set that tracks popular songs 
-                             from around the globe that were listened to on Spotify. We got our dataset from kaggle. 
-                                It looks at variables such as: song name, country, date, artist, genre, streams, 
-                                and a position it appears in a country’s chart . We want to develop a website that helps people 
-                                find new artists and music to listen to based on songs, artists, and genres they like. 
-                                You would answer a few questions to gauge your music taste, and in return the website provides 
-                                personalized music recommendations. We could show different songs that are trending around the globe. 
-                                We have graphics that break down the stats of popular songs and artists in different countries. 
-                                We want our website to be interactive and focus on a global perspective. Expanding your worldview and exposure to 
-                                different cultures through music.")
+                         h3("Finding new music to listen to can be a constant struggle. 
+                             Although streaming platforms have their own recommendation algorithms, 
+                             some may say that they have already heard the recommendations. We wanted to reinvent 
+                             the music recommendation process. Our project uses a data set from Kaggle that tracks popular songs 
+                             from around the globe that were listened to on Spotify. 
+                                The website that was developed helps people find new artists and music to listen to based on songs, artists, and genres they already like. 
+                                Additionally, it shows different songs that are trending around the globe. 
+                                The graphics break down the stats of popular songs and artists in different countries, along with an interactive option.")
                 ),
                 tabPanel("Research questions",
                          h3("- Our main question is how do we take data from active listeners to give them a recommended playlist; 
