@@ -1,4 +1,4 @@
-# Title of your Project: Project Proposal 
+# Spotify Music Track data: Project Proposal 
 
 **TODO**: Edit this file. Your project proposal goes here.
 
