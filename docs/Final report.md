@@ -1,4 +1,4 @@
-# Instructions for P01: Project Proposal
+# Final Project Report for Spotify Music Tracks
 
 * **Where is the project brief?**  [`../instructions/project-design-brief.pdf`](../instructions/project-design-brief.pdf).
 * **Making Progress**: We understand this project might be difficult. Also, we understand that your project ideas might not be completely worked out. So, we ask that you do the best you can. You will receive specific guidance from your TA and constructive feedback. We are confident that you will succeed!
