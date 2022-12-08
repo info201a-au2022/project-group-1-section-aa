@@ -1,5 +1,5 @@
 library(shiny)
-source("app_ui.R")
+source("ui.R")
 
 spotiify_origional <- read.csv("https://raw.githubusercontent.com/info201a-au2022/project-group-1-section-aa/main/data/charts.csv")
 #spotiify_origional <- read.csv("charts.csv")
