@@ -21,7 +21,7 @@ ui <- navbarPage(
         While many have no clear vision of how these systems operate, along with utalizing them to amplify artist discovery, it is important to expose artists to music listeners. Our focus is to figure 
         out the most popular songs around the globe in 2022, and to find out whether there is an association with demographic location and song popularity. In order to analyze our focus, the data collectection came
         directly from a Spotify dataset. The dataset contained crucial information including songs, artists, location, and streams. We specifically chose to analyze 2022, since it is the most recent year. Nonetheless,
-        the goal of this project is to introduce listeners to a wider persepctive, especially when it comes to cultural awareness.
+        the goal of this project is to introduce listeners to a wider persepctive, especially when it comes to cultural awareness."),
 
   tabPanel(
     "Background & Research Questions",
