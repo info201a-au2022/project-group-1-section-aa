@@ -171,8 +171,7 @@ ui <- navbarPage(
                          h3("Technologists: In the future, technologists 
                                 can utilize what we have to create unique, 
                                 user-oriented projects across a wide range of fields. 
-                                We envision our project to be applicable to a wide range of fields, 
-                                including music, real estate, food delivery, 
+                                We envision our project to be applicable towards music, real estate, food delivery, 
                                 the automobile market, and many others.") ,
                          h3("A designer's main objective is to create unique 
                                 visual representations that help customers understand 
@@ -182,10 +181,9 @@ ui <- navbarPage(
                                 solutions that satisfy clients' requirements and, most 
                                 importantly, create visuals that are unique and personal 
                                 for clients."),
-                         h3("Policymakers can better understand people's needs by evaluating 
-                                the data our program provides and, based on those needs, modify 
-                                regulations to meet those needs. By using our project, policymakers 
-                                can better understand people's needs and eventually develop a more 
+                         h3("Spotify can better understand people's needs by evaluating 
+                                the data our program provides. The streaming service can also expand
+                                 to be more globally focused. Along with developing a more 
                                 equalized social environment. ")
                 )
     )
